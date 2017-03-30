@@ -7,13 +7,13 @@
 //
 
 import UIKit
-let IMG = UIImage.init(named: "气泡.png")?.stretchableImageWithLeftCapWidth(60, topCapHeight: 60)
+let IMG = UIImage.init(named: "气泡.png")?.stretchableImage(withLeftCapWidth: 60, topCapHeight: 60)
 class XLRightCell: UITableViewCell {
     var ContainLab:UILabel
     lazy var HeadImg:UIImageView? = {
         return UIImageView.init(image: UIImage.init(named: "Right.jpg"))
     }()
-    private var ImgV_R:UIImageView?
+    fileprivate var ImgV_R:UIImageView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,10 +25,10 @@ class XLRightCell: UITableViewCell {
         self.InitUI()
         
     }
-    private func InitUI(){
-        self.selectionStyle = UITableViewCellSelectionStyle.None
-        self.backgroundColor = UIColor.clearColor()
-        self.contentView.backgroundColor = UIColor.clearColor()
+    fileprivate func InitUI(){
+        self.selectionStyle = UITableViewCellSelectionStyle.none
+        self.backgroundColor = UIColor.clear
+        self.contentView.backgroundColor = UIColor.clear
         self.contentView.addSubview(HeadImg!)
         HeadImg?.snp_makeConstraints(closure: { (make) in
             make.right.equalTo(self.contentView).offset(-15)
@@ -47,19 +47,19 @@ class XLRightCell: UITableViewCell {
             make.height.lessThanOrEqualTo(1000)
         }
         ContainLab.numberOfLines = 0
-        ContainLab.backgroundColor = UIColor.clearColor()
+        ContainLab.backgroundColor = UIColor.clear
         self.contentView.addSubview(ContainLab)
         ContainLab.snp_makeConstraints(closure: { (make) in
             make.edges.equalTo(BacImgv).inset(UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 20))
         })
     }
-    internal func ConfigCellWithContain(contain:String){
+    internal func ConfigCellWithContain(_ contain:String){
         ContainLab.text = contain
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

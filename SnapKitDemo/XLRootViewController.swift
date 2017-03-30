@@ -21,28 +21,28 @@ class XLRootViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     func CreateUI() -> Void {
         self.title = "自动布局"
-        let ChatTable:UITableView = UITableView(frame: CGRect(x: 0, y: 0, width: CGRectGetWidth(self.view.frame), height: CGRectGetHeight(self.view.frame)), style: UITableViewStyle.Plain)
+        let ChatTable:UITableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), style: UITableViewStyle.plain)
         self.view.addSubview(ChatTable)
-        ChatTable.separatorStyle = UITableViewCellSeparatorStyle.None
+        ChatTable.separatorStyle = UITableViewCellSeparatorStyle.none
         ChatTable.delegate = self
         ChatTable.dataSource = self
-        ChatTable.registerClass(XLLeftCell().classForCoder, forCellReuseIdentifier:LeftCellIDF)
-        ChatTable.registerClass(XLRightCell().classForCoder, forCellReuseIdentifier: RightCellIDF)
+        ChatTable.register(XLLeftCell().classForCoder, forCellReuseIdentifier:LeftCellIDF)
+        ChatTable.register(XLRightCell().classForCoder, forCellReuseIdentifier: RightCellIDF)
         ChatTable.estimatedRowHeight = 80
         ChatTable.rowHeight = UITableViewAutomaticDimension
     }
 // delegate
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return DataArr.count
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row % 2 == 1 {
-            let cell = tableView.dequeueReusableCellWithIdentifier(LeftCellIDF) as! XLLeftCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: LeftCellIDF) as! XLLeftCell
             cell.ConfigCellWithContain(DataArr[indexPath.row])
             return cell
         }else{
-            let cell = tableView.dequeueReusableCellWithIdentifier(RightCellIDF) as! XLRightCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: RightCellIDF) as! XLRightCell
             cell.ConfigCellWithContain(DataArr[indexPath.row])
             return cell
         }

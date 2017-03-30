@@ -14,17 +14,17 @@ class XLLeftCell: UITableViewCell {
     lazy var HeadImg:UIImageView? = {
         return UIImageView.init(image: UIImage.init(named: "Left.jpg"))
     }()
-    private var ImgV:UIImageView?
+    fileprivate var ImgV:UIImageView?
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         ContainLab = UILabel()
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.InitUI()
     }
-    private func InitUI(){
-        self.selectionStyle = UITableViewCellSelectionStyle.None
-        self.backgroundColor = UIColor.clearColor()
-        self.contentView.backgroundColor = UIColor.clearColor()
+    fileprivate func InitUI(){
+        self.selectionStyle = UITableViewCellSelectionStyle.none
+        self.backgroundColor = UIColor.clear
+        self.contentView.backgroundColor = UIColor.clear
         self.contentView.addSubview(HeadImg!)
         HeadImg?.snp_makeConstraints(closure: { (make) in
             make.left.equalTo(self.contentView).offset(15)
@@ -43,13 +43,13 @@ class XLLeftCell: UITableViewCell {
             make.height.lessThanOrEqualTo(1000)
         }
         ContainLab.numberOfLines = 0
-        ContainLab.backgroundColor = UIColor.clearColor()
+        ContainLab.backgroundColor = UIColor.clear
         self.contentView.addSubview(ContainLab)
         ContainLab.snp_makeConstraints(closure: { (make) in
             make.edges.equalTo(BacImgv).inset(UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 20))
         })
     }
-    internal func ConfigCellWithContain(contain:String){
+    internal func ConfigCellWithContain(_ contain:String){
         ContainLab.text = contain
     }
     required init?(coder aDecoder: NSCoder) {
@@ -60,7 +60,7 @@ class XLLeftCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
